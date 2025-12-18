@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apswutils
-  version: 0.1.1
+  version: "0.1.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apswutils-${{ version }}.tar.gz
-  sha256: 268369783837ccea2e4897f088ef8c79606f12d49974122a4be91bfddee53d15
+  sha256: 7992828cc4f7261925685e9e40ab189728050bdee049648481ce6a52ddb5d5dd
 
 build:
   number: 0
