@@ -1,0 +1,53 @@
+{% set name = "apswutils" %}
+{% set version = "0.1.2" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/AnswerDotAI/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: e8829a7e07ad4a6b3c004fca6b69179d0abbfed01442052ab238dddc1749910e
+
+build:
+  number: 0
+  skip: true  # [py<39]
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv
+
+requirements:
+  host:
+    - python
+    - setuptools >=64.0
+    - pip
+  run:
+    - python
+    # https://github.com/AnswerDotAI/apswutils/blob/0.1.2/settings.ini#L29
+    - fastcore
+    - apsw
+
+test:
+  source_files:
+    - tests
+  imports:
+    - apswutils
+  requires:
+    - pip
+    - pytest
+    - hypothesis
+  commands:
+    - pip check
+    - pytest -v tests
+
+about:
+  home: https://github.com/AnswerDotAI/apswutils
+  summary: A fork of sqlite-minutils for apsw
+  description: A fork of sqlite-minutils for apsw
+  license: Apache-2.0
+  license_file: LICENSE
+  license_family: Apache
+  doc_url: https://github.com/AnswerDotAI/apswutils/blob/main/README.md
+  dev_url: https://github.com/AnswerDotAI/apswutils
+
+extra:
+  recipe-maintainers:
+    - synapticarbors
