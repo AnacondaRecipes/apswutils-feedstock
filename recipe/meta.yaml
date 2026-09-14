@@ -10,14 +10,14 @@ source:
   sha256: e8829a7e07ad4a6b3c004fca6b69179d0abbfed01442052ab238dddc1749910e
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv
 
 requirements:
   host:
     - python
-    - setuptools >=64.0
+    - setuptools >=64.0,<82
     - pip
   run:
     - python
